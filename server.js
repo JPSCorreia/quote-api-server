@@ -44,7 +44,7 @@ quoteRouter.get('/', (req, res, next) => {
       }
     )
   } else {
-    console.log('No quotes found. Retrieving all quotes...')
+    console.log('Retrieving quotes...')
     res.status(200).send(
       {
       quotes: quotes
@@ -114,7 +114,7 @@ quoteRouter.put('/:id', (req, res, next) => {
 // HTTP DELETE Request handler for deleting quotes:
 quoteRouter.delete('/:id', (req, res, next) => {
   const id = req.params.id;
-  if (id) {
+  if (id < quotes.length) {
     console.log('Quote deleted...')
     quotes.splice(id, 1)
     res.status(200).send(quotes[id])
